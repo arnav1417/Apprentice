@@ -1,9 +1,10 @@
 const { exec } = require("child_process");
+const { generateFile } = require("../Helper_function/generate_file");
 const fs = require('fs')
 exports.allServicesUp = () => {
     return new Promise((resolve) => {
         if(!fs.existsSync('./file_config.json')){
-            resolve({ "no_file": true })
+            generateFile().then((output=>{output=="Complete"?this.allServicesUp:resolve({"no_file":true})}));
         }
         const data = JSON.parse(fs.readFileSync('./file_config.json'));
         if(data.length!=0){
