@@ -1,5 +1,5 @@
 const { Client, Collection,Events, GatewayIntentBits} = require("discord.js");
-const dotenv = require("dotenv").config().parsed;
+const dotenv = require("dotenv").config({path:__dirname+'/.env'}).parsed;
 const token = dotenv.token;
 const fs = require("node:fs");
 const path = require("node:path");
