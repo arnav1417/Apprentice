@@ -1,6 +1,6 @@
 const { exec } = require("child_process");
 exports.dockerPull = (ConfigFile) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         const command = `docker compose -f ${ConfigFile} pull`
         exec(command, (error, stdout, stderr) => {
             if (error) {
