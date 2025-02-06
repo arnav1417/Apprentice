@@ -4,24 +4,24 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("dup")
         .setDescription("Starts container")
-        .addStringOption(option=>
+        .addStringOption(option =>
             option.setName('container')
-            .setDescription("Specific Container to start")
-            .setRequired(false)
+                .setDescription("Specific Container to start")
+                .setRequired(false)
         ),
-    async execute(interaction){
+    async execute(interaction) {
         await interaction.deferReply();
         const containerName = interaction.options.getString('container');
-        if(containerName){
+        if (containerName) {
             const output = await allServicesUp(containerName);
-            if(output.Complete) await interaction.editReply(`${containerName} Started`)
+            if (output.Complete) await interaction.editReply(`${containerName} Started`)
             else await interaction.editReply(`Error in starting ${containerName}`);
         }
-        else{
+        else {
             const output = await allServicesUp();
-            if(output.Complete) await interaction.editReply("Services Started")
-            else if(output.no_file) await interaction.editReply(`*try running /genfile*`);
-            else await interaction.editReply('Error in starting');  
+            if (output.Complete) await interaction.editReply("Services Started")
+            else if (output.no_file) await interaction.editReply(`*try running /genfile*`);
+            else await interaction.editReply('Error in starting');
         }
     }
 
