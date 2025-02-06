@@ -28,7 +28,7 @@ exports.tailscalePull = () => {
                 });
                 Promise.all(out)
                     .then(results => {
-                        resolve({ "complete": true })
+                        resolve({ "Complete": true })
                     })
                     .catch(error => {
                         resolve({ "stderr": false });

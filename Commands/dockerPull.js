@@ -15,16 +15,16 @@ module.exports = {
         const bool = interaction.options.getBoolean('update');
         if (bool) {
             const output = await dockerPull();
-            if (output.complete) {
+            if (output.Complete) {
                 const allup = await allServicesUp();
-                if (allup.complete) await interaction.editReply("Images have Started")
+                if (allup.Complete) await interaction.editReply("Images have Started")
                 else await interaction.editReply("Error in starting containers")
             }
             else await interaction.editReply("Error in pulling image");
         }
         else {
             const output = await dockerPull();
-            if (output.complete) {
+            if (output.Complete) {
                 await interaction.editReply("Images pulled Successfully");
             }
             else await interaction.editReply("Error in pulling image");
